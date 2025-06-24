@@ -22,7 +22,7 @@ const FlowCanvas = () => {
     const block = JSON.parse(
       event.dataTransfer.getData("application/reactflow")
     );
-    const position = { x: event.clientX - 300, y: event.clientY }; 
+    const position = { x: event.clientX - 300, y: event.clientY };
     const newNode = {
       id: `${block.type}-${+new Date()}`,
       type: "custom",
@@ -67,6 +67,7 @@ const FlowCanvas = () => {
         }))}
         edges={edges}
         onConnect={onConnect}
+        isValidConnection={(connection) => isValidConnection(connection, nodes)}
         nodeTypes={nodeTypes}
         onPaneClick={onPaneClick}
         fitView
